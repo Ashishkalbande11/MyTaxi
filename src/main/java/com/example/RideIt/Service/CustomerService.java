@@ -2,6 +2,7 @@ package com.example.RideIt.Service;
 
 import com.example.RideIt.DTO.Request.CustomerRequest;
 import com.example.RideIt.DTO.Response.CustomerResponse;
+import com.example.RideIt.DTO.Response.TripBookingResponse;
 import com.example.RideIt.Enum.Gender;
 import com.example.RideIt.Model.Customer;
 import com.example.RideIt.Repository.CustomerRepository;
@@ -39,4 +40,6 @@ public class CustomerService {
         }
         return customerResponseList;
     }
+
+
 }

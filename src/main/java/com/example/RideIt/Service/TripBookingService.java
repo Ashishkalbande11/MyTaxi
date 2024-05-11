@@ -12,11 +12,16 @@ import com.example.RideIt.Repository.CustomerRepository;
 import com.example.RideIt.Repository.DriverRepository;
 import com.example.RideIt.Repository.TripBookingRepository;
 import com.example.RideIt.Transformer.BookingTransformer;
+import com.example.RideIt.Transformer.CustomerTransformer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -29,7 +34,6 @@ public class TripBookingService {
 
     @Autowired
     JavaMailSender javaMailSender;
-
 
     public TripBookingResponse bookCab(boolean applyCoupon, TripBookingRequest tripBookingRequest) {
         Customer customer = customerRepository.findByEmailId(tripBookingRequest.getCustomerEmailId());
@@ -50,6 +54,7 @@ public class TripBookingService {
         TripBooking savesTripBooking = tripBookingRepository.save(tripBooking);
 
         customer.getBookings().add(savesTripBooking);
+
         cab.setAvailable(false);
         cab.getDriver().getBookings().add(savesTripBooking);
 
@@ -74,5 +79,16 @@ public class TripBookingService {
         simpleMailMessage.setText(text);
 
         javaMailSender.send(simpleMailMessage);
+    }
+
+
+
+    public void updateAllCabsToAvailable() {
+        List<Cab> cabs = cabRepository.findAll();
+
+        for (Cab cab : cabs) {
+            cab.setAvailable(true);
+        }
+        cabRepository.saveAll(cabs);
     }
 }

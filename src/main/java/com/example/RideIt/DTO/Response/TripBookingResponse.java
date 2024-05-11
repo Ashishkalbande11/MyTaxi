@@ -4,6 +4,8 @@ import com.example.RideIt.Enum.TripStatus;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.sql.Time;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -25,7 +27,7 @@ public class TripBookingResponse {
 
     TripStatus tripStatus;
 
-    Date bookedAt;
+    LocalDateTime bookedAt;
 
     CustomerResponse customerResponse;
 

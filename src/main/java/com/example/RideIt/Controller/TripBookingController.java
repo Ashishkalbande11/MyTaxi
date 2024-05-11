@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/trip")
 public class TripBookingController {
@@ -24,4 +26,16 @@ public class TripBookingController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
 
     }
+    @PutMapping("/cab")
+    public String updateCab(){
+        tripBookingService.updateAllCabsToAvailable();
+        return "All Cabs Are Available now";
+    }
+
+//    @GetMapping("/allbookings")
+//    public ResponseEntity<List<TripBookingResponse>> gettAllBookingForCustomer(@PathVariable int customerId){
+//        List<TripBookingResponse> bookings = tripBookingService.getAllBookingsForCustomer(customerId);
+//        return new ResponseEntity<>(bookings,HttpStatus.CREATED);
+//    }
+
 }

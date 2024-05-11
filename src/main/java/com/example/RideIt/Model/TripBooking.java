@@ -7,6 +7,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -34,7 +35,7 @@ public class TripBooking {
         TripStatus tripStatus;
 
         @CreationTimestamp
-        Date bookedAt;
+        LocalDateTime bookedAt;
 
         @ManyToOne
         @JoinColumn

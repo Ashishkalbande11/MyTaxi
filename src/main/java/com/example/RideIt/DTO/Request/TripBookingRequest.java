@@ -3,6 +3,9 @@ package com.example.RideIt.DTO.Request;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.sql.Time;
+import java.util.Date;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -17,5 +20,7 @@ public class TripBookingRequest {
     double tripDistanceInKm;
 
     String customerEmailId;
+
+
 
 }

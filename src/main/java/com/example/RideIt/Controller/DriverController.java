@@ -22,10 +22,4 @@ public class DriverController {
         String response = driverService.addDriver(driverRequest);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
-//    @GetMapping("/mob-no/{mob-no}")
-//    public Driver getDriver(@PathVariable("mob-no") String mobNo){
-//        return driverService.getDriver(mobNo);
-//
-//    }
-
 }

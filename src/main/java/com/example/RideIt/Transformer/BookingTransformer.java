@@ -5,6 +5,10 @@ import com.example.RideIt.DTO.Response.TripBookingResponse;
 import com.example.RideIt.Enum.TripStatus;
 import com.example.RideIt.Model.TripBooking;
 
+import javax.print.attribute.standard.DateTimeAtProcessing;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.UUID;
 
 public class BookingTransformer {
@@ -13,8 +17,10 @@ public class BookingTransformer {
                 .source(tripBookingRequest.getSource())
                 .destination(tripBookingRequest.getDestination())
                 .tripStatus(TripStatus.IN_TRANSIT)
+                .bookedAt(LocalDateTime.now())
                 .tripDistanceInKm(tripBookingRequest.getTripDistanceInKm())
                 .bookingId(String.valueOf(UUID.randomUUID()))
+
                 .build();
     }
     public static TripBookingResponse tripBookingToTripBookingResponse(TripBooking tripBooking){

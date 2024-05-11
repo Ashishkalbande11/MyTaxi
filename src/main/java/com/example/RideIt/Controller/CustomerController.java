@@ -2,6 +2,7 @@ package com.example.RideIt.Controller;
 
 import com.example.RideIt.DTO.Request.CustomerRequest;
 import com.example.RideIt.DTO.Response.CustomerResponse;
+import com.example.RideIt.DTO.Response.TripBookingResponse;
 import com.example.RideIt.Enum.Gender;
 import com.example.RideIt.Model.Customer;
 import com.example.RideIt.Service.CustomerService;
@@ -35,4 +36,5 @@ public class CustomerController {
         List<CustomerResponse> customerResponses = customerService.getCustomerByGenderAndAgeGreaterThan(gender,age);
         return new ResponseEntity<>(customerResponses,HttpStatus.FOUND);
     }
+
 }

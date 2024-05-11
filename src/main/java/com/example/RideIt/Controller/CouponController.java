@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/coupon")
+@RequestMapping("/api/v1")
 public class CouponController {
 
     private final CouponService couponService;
@@ -19,7 +19,7 @@ public class CouponController {
         this.couponService = couponService;
     }
 
-    @PostMapping
+    @PostMapping("/coupon")
     public ResponseEntity<String> addCoupon(@RequestParam("coupon-code")String couponCode,
                                             @RequestParam("percentage-discount") int discount){
         String response = couponService.addCoupon(couponCode,discount);
